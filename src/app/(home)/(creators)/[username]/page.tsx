@@ -1,4 +1,8 @@
+import PostsSection from "@/core/Posts";
+import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
+import { FaArrowLeft } from "react-icons/fa6";
 
 const ProfileCreator = async ({ params }: { params: Promise<{ username: string }> }) => {
   const resolvedParams = await params;
@@ -7,18 +11,46 @@ const ProfileCreator = async ({ params }: { params: Promise<{ username: string }
   const cleanUsername = username.replace("@", "");
 
   return (
-    <div>
-      <div className="relative h-28 w-full overflow-hidden bg-zinc-900">
-        <div className="absolute -left-5 top-2 h-36 w-36 rounded-full border-[14px] border-zinc-800" />
-        <div className="absolute left-1/3 -top-8 h-32 w-32 rounded-full bg-zinc-800" />
-        <div className="absolute -right-5 top-5 h-40 w-40 rounded-full border border-zinc-700">
-          <div className="absolute inset-5 rounded-full border border-zinc-700">
-            <div className="absolute inset-5 rounded-full border border-zinc-700" />
+    <main className="min-h-screen w-full max-w-2xl mx-auto border-x border-zinc-900/50">
+      <header className="sticky top-0 z-20 border-b border-zinc-900/50 bg-zinc-950/90 backdrop-blur-xl">
+        <div className="p-6">
+          <Link href="/">
+            <FaArrowLeft className="my-2"/>
+          </Link>
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-lg font-semibold">Argi Ahmes Halepiyandra</h1>
+              <p className="text-zinc-400 text-[12px]">{cleanUsername}</p>
+            </div>
+            <Image className="w-18 h-18 object-cover rounded-full" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" width={500} height={500} alt="Profile Picture" />
+          </div>
+          <div className="my-2 text-[14px]">
+            <p>Just Building.</p>
+          </div>
+          <div className="flex items-center gap-2 text-[12px] text-zinc-600">
+            <p>100 Followers</p>
+            <p>10 Following</p>
           </div>
         </div>
-      </div>
-      <div>Hello, {cleanUsername}</div>
-    </div>
+        <div className="flex items-center px-2">
+          {["Posts", "Products", "Publications"].map((tab, index) => (
+            <button
+              key={tab}
+              className={`border-b-2 px-3 py-2.5 transition cursor-pointer ${
+                index === 0
+                  ? "border-white font-semibold text-white"
+                  : "border-transparent text-zinc-500 hover:text-white"
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+      </header>
+      <section className="p-6">
+        <PostsSection/>
+      </section>
+    </main>
   )
 }
 

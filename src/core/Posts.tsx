@@ -1,12 +1,13 @@
 import AttachPostArticle from "@/components/ui/posts/AttachPostArticle";
 import AttachPostProduct from "@/components/ui/posts/AttachPostProduct";
 import { posts } from "@/data/Posts";
+import Link from "next/link";
 import {
-  FiHeart,
-  FiMessageSquare,
-  FiRepeat,
-  FiBookmark,
-  FiMoreHorizontal,
+    FiBookmark,
+    FiHeart,
+    FiMessageSquare,
+    FiMoreHorizontal,
+    FiRepeat,
 } from "react-icons/fi";
 
 const PostsSection = () => {
@@ -18,13 +19,13 @@ const PostsSection = () => {
           className="border-b border-zinc-900/50 px-4 py-4 transition hover:bg-zinc-900/20"
         >
           <div className="flex gap-3">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-700 text-[10px] font-bold">
+            <Link href={post.username} className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-700 text-[10px] font-bold">
               {post.avatar}
-            </div>
+            </Link>
 
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-1.5">
-                <h3 className="text-xs font-bold">{post.name}</h3>
+                <Link href={post.username} className="text-xs font-bold hover:underline">{post.name}</Link>
 
                 <span className="truncate text-[10px] text-zinc-500">
                   {post.username} · {post.time}

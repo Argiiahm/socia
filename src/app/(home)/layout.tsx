@@ -19,10 +19,9 @@ const UserLayoutContent = ({ children }: { children: React.ReactNode }) => {
   return (
     <main className="min-h-screen w-full">
       <Sidebar />
-
       <section
         className={`mx-auto min-h-screen min-w-0 w-full ${pathname === "/products" ? "lg:pl-64 xl:pl-[280px]" : "lg:pl-0 xl:pl-0"} pl-0  ${
-          pathname === "/products" ? "max-w-[1560px]" : "max-w-4xl"
+          pathname === "/products" ? "max-w-[1560px]" : "max-w-2xl"
         }`}
       >
         {children}
