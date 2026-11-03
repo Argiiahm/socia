@@ -16,7 +16,7 @@ const PostsSection = () => {
       {posts.map((post) => (
         <article
           key={post.id}
-          className="border-b border-zinc-900/50 px-4 py-4 transition hover:bg-zinc-900/20"
+          className="px-4 py-4 transition hover:bg-zinc-900/20"
         >
           <div className="flex gap-3">
             <Link href={post.username} className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-700 text-[10px] font-bold">
