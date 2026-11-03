@@ -3,29 +3,34 @@ import AttachPostProduct from "@/components/ui/posts/AttachPostProduct";
 import { posts } from "@/data/Posts";
 import Link from "next/link";
 import {
-    FiBookmark,
-    FiHeart,
-    FiMessageSquare,
-    FiMoreHorizontal,
-    FiRepeat,
+  FiBookmark,
+  FiHeart,
+  FiMessageSquare,
+  FiMoreHorizontal,
+  FiRepeat,
 } from "react-icons/fi";
 
 const PostsSection = () => {
   return (
     <section>
       {posts.map((post) => (
-        <article
-          key={post.id}
-          className="px-4 py-4 transition hover:bg-zinc-900/20"
-        >
+        <article key={post.id} className="p-4 transition hover:bg-zinc-900/20">
           <div className="flex gap-3">
-            <Link href={post.username} className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-700 text-[10px] font-bold">
+            <Link
+              href={post.username}
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-700 text-[10px] font-bold"
+            >
               {post.avatar}
             </Link>
 
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-1.5">
-                <Link href={post.username} className="text-xs font-bold hover:underline">{post.name}</Link>
+                <Link
+                  href={post.username}
+                  className="text-xs font-bold hover:underline"
+                >
+                  {post.name}
+                </Link>
 
                 <span className="truncate text-[10px] text-zinc-500">
                   {post.username} · {post.time}

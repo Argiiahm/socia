@@ -4,9 +4,9 @@ import Link from "next/link";
 
 const ProductCard = ({ product }: { product: ProductTypes }) => {
   return (
-    <article className="group min-w-0 overflow-hidden">
-      <Link href={`products/${product.slug}`}>
-        <div className="relative aspect-square overflow-hidden bg-zinc-900">
+    <article className="group min-w-0 overflow-hidden border border-zinc-900/50 bg-zinc-900/40">
+      <Link href={`/products/${product.slug}`}>
+        <div className="relative aspect-[4/3] overflow-hidden bg-zinc-800">
           <Image
             src={product.thumbnail}
             alt={product.name}
@@ -15,12 +15,12 @@ const ProductCard = ({ product }: { product: ProductTypes }) => {
             className="object-cover"
           />
         </div>
-        <div className="py-2">
-          <h3 className="truncate text-xs font-medium text-zinc-300">
+
+        <div className="p-2.5">
+          <h3 className="truncate text-[11px] font-semibold text-zinc-200">
             {product.name}
           </h3>
-          <p className="mt-1.5 text-sm font-bold text-white">{product.price}</p>
-          <p className="mt-1 truncate text-[10px] text-zinc-500">wkwkkw</p>
+          <p className="mt-2 text-sm font-bold text-white">{product.price}</p>
         </div>
       </Link>
     </article>

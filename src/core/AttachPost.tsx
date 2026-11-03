@@ -2,7 +2,7 @@ import { FiBook, FiImage, FiShoppingBag } from "react-icons/fi";
 
 const AttachPost = () => {
   return (
-    <section className="hidden lg:block border-b border-zinc-900/50 px-4 py-4">
+    <section className="hidden lg:block border-b border-zinc-900/50 p-4">
       <form>
         <div className="min-w-0 flex-1">
           <textarea

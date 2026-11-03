@@ -3,8 +3,6 @@
 import HeaderBar from "@/components/layouts/HeaderBar";
 import ProductCard from "@/components/ui/products/ProductCard";
 import { products } from "@/data/Products";
-import Image from "next/image";
-import Link from "next/link";
 
 const ProductsPage = () => {
   return (
