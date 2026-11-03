@@ -47,6 +47,6 @@ export const menuItems: MenuItemType[] = [
   {
     label: "Profile",
     icon: FiUser,
-    href: "/profile",
+    href: "/@argiiahm",
   },
 ];
