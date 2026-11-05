@@ -1,6 +1,6 @@
 import HeaderBar from "@/components/layouts/HeaderBar";
-import AttachPost from "@/core/AttachPost";
-import PostsSection from "@/core/Posts";
+import AttachPost from "@/components/core/AttachPost";
+import PostsSection from "@/components/ui/posts/Posts";
 
 export default function HomePage() {
   return (

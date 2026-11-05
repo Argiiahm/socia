@@ -1,5 +1,6 @@
 "use client";
 
+import BottomNav from "@/components/layouts/BottomNav";
 import Sidebar from "@/components/layouts/Sidebar";
 import { usePathname } from "next/navigation";
 import { Suspense } from "react";
@@ -26,6 +27,7 @@ const UserLayoutContent = ({ children }: { children: React.ReactNode }) => {
       >
         {children}
       </section>
+      <BottomNav />
     </main>
   );
 };

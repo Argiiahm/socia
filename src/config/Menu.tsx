@@ -1,12 +1,8 @@
-import {
-  FiHome,
-  FiCompass,
-  FiBell,
-  FiMail,
-  FiBook,
-  FiUser,
-} from "react-icons/fi";
+import { FiHome, FiBell, FiUser } from "react-icons/fi";
 import type { IconType } from "react-icons";
+import { TbMessages } from "react-icons/tb";
+import { PiBookmarksLight } from "react-icons/pi";
+import { HiOutlineShoppingBag } from "react-icons/hi2";
 
 export type MenuItemType = {
   label: string;
@@ -24,7 +20,7 @@ export const menuItems: MenuItemType[] = [
   },
   {
     label: "Products",
-    icon: FiCompass,
+    icon: HiOutlineShoppingBag,
     href: "/products",
   },
   {
@@ -36,12 +32,12 @@ export const menuItems: MenuItemType[] = [
   },
   {
     label: "Messages",
-    icon: FiMail,
+    icon: TbMessages,
     href: "/messages",
   },
   {
     label: "Publications",
-    icon: FiBook,
+    icon: PiBookmarksLight,
     href: "/publications",
   },
   {
