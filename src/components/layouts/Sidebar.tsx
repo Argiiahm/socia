@@ -23,9 +23,9 @@ const Sidebar = () => {
           <Navlink key={item.label} item={item} />
         ))}
 
-        <button className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-white py-3 text-sm font-semibold text-zinc-950 transition hover:bg-zinc-200">
+        <button className="mt-4 flex w-full items-center justify-center gap-2 cursor-pointer rounded-full bg-white py-3 text-sm font-semibold text-zinc-950 transition hover:bg-zinc-200">
           <FiPlus size={18} />
-          Create
+          Post
         </button>
       </nav>
 
