@@ -65,6 +65,7 @@ export async function POST(request: NextRequest) {
       email,
       password,
       options: {
+        emailRedirectTo: `${new URL(request.url).origin}/callback`,
         data: {
           fullname,
           username: username.toLowerCase(),

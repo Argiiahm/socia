@@ -1,13 +1,42 @@
+"use client";
+
 import InputForm from "@/components/ui/input";
+import { RegisterInput, RegisterSchema } from "@/schemas/auth.schema";
+import { Register } from "@/services/auth.service";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { FaGoogle } from "react-icons/fa6";
 import { FiLock, FiMail } from "react-icons/fi";
 
 const RegisterPage = () => {
+  const [error, setError] = useState("");
+  const router = useRouter();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<RegisterInput>({ resolver: zodResolver(RegisterSchema) });
+
+  const onSubmit = async (data: RegisterInput) => {
+    try {
+      await Register(data);
+      router.push(`/verify-email?email=${encodeURIComponent(data.email)}`);
+    } catch (error) {
+      setError(error instanceof Error ? error.message : "Failed Register");
+    }
+  };
+
   return (
     <div className="w-full max-w-sm">
-      <form className="space-y-5">
+      {error && <div className="text-red-500">{error}</div>}
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
         <InputForm
+          {...register("fullname")}
+          error={errors.fullname}
           icon={FiMail}
           label="Fullname"
           name="fullname"
@@ -15,6 +44,8 @@ const RegisterPage = () => {
           placeholder="John Doe"
         />
         <InputForm
+          {...register("username")}
+          error={errors.username}
           icon={FiMail}
           label="username"
           name="username"
@@ -22,6 +53,8 @@ const RegisterPage = () => {
           placeholder="johndoe"
         />
         <InputForm
+          {...register("email")}
+          error={errors.email}
           icon={FiMail}
           label="Email address"
           name="email"
@@ -30,6 +63,8 @@ const RegisterPage = () => {
         />
 
         <InputForm
+          {...register("password")}
+          error={errors.password}
           icon={FiLock}
           label="Password"
           name="password"
@@ -39,11 +74,13 @@ const RegisterPage = () => {
 
         <button
           type="submit"
+          disabled={isSubmitting}
           className="flex w-full items-center justify-center gap-2 rounded-lg bg-zinc-300 cursor-pointer py-3 text-sm font-semibold text-zinc-950 transition hover:bg-zinc-200"
         >
-          Sign in
+          {isSubmitting ? "Please wait.." : "Sign up"}
         </button>
       </form>
+
       <div className="my-7 flex items-center gap-4">
         <div className="h-px flex-1 bg-zinc-800" />
         <span className="text-xs text-zinc-600">OR CONTINUE WITH</span>
