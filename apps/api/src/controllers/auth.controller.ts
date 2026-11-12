@@ -37,10 +37,7 @@ export const Login = asyncHandler(
         errors: validateData.error.flatten(),
       });
     }
-
     const result = await AuthService.Login(validateData.data);
-
-    console.log(result);
 
     res.cookie("refreshToken", result.refreshToken, CookieConfiguration);
     return res.status(200).json({
@@ -64,3 +61,14 @@ export const Refresh = async (req: Request, res: Response) => {
     },
   });
 };
+
+export const Logout = asyncHandler(async (req: Request, res: Response) => {
+  const refreshToken = req.cookies.refreshToken;
+  await AuthService.Logout(refreshToken);
+  res.clearCookie("refreshToken", CookieConfiguration);
+
+  return res.status(200).json({
+    success: true,
+    message: "Logout Successfully",
+  });
+});
