@@ -2,7 +2,9 @@
   "name": "socia",
   "version": "0.1.0",
   "private": true,
-  "workspaces": ["apps/*"],
+  "workspaces": [
+    "apps/*"
+  ],
   "scripts": {
     "dev": "concurrently -n web,api -c blue,cyan \"npm run dev:web\" \"npm run dev:api\"",
     "dev:web": "npm run dev --workspace=@socia/web",
