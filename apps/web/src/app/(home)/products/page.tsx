@@ -6,7 +6,7 @@ import { products } from "@/data/Products";
 
 const ProductsPage = () => {
   return (
-    <main className="min-h-screen w-full border-x border-zinc-900/50">
+    <main className="min-h-screen w-full border-x border-zinc-200/50">
       <HeaderBar title="Digital Products" />
       <section className="p-4">
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">

@@ -4,7 +4,7 @@ import Link from "next/link";
 const PublicationCard = () => {
   return (
     <Link href="/publications/the-journey-everything-starts-somewhere">
-      <div className="mt-3 cursor-pointer overflow-hidden border border-zinc-800 bg-zinc-900/80">
+      <div className="mt-3 cursor-pointer overflow-hidden border border-zinc-200/50">
         <div className="relative aspect-[16/9] object-cover w-full overflow-hidden">
           <Image
             src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e"
@@ -19,13 +19,13 @@ const PublicationCard = () => {
           <div className="flex items-center gap-2 mb-2">
             <Link
               href=""
-              className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-zinc-700 text-[10px] font-bold"
+              className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-[10px] font-bold text-zinc-400"
             >
               AG
             </Link>
             <p className="text-[14px] text-zinc-500">Argiiahm</p>
           </div>
-          <p className="font-medium text-sm leading-relaxed text-white">
+          <p className="font-medium text-sm leading-relaxed text-zinc-400">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam,
             dolores. Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Aperiam, dolores...

@@ -7,7 +7,7 @@ import { useState } from "react";
 const AttachPost = () => {
   const [open, setIsOpen] = useState(false);
   return (
-    <section className="hidden lg:block border-b border-zinc-900/50 p-4">
+    <section className="hidden lg:block border-b border-zinc-200/50 p-4">
       <div className="min-w-0 flex-1">
         <textarea
           onClick={() => setIsOpen(true)}
@@ -20,7 +20,7 @@ const AttachPost = () => {
           <div className="flex flex-wrap items-center text-sm gap-4">
             <button
               onClick={() => setIsOpen(true)}
-              className="flex items-center gap-1.5 text-zinc-400 transition hover:text-white"
+              className="flex items-center gap-1.5 text-zinc-400 transition hover:opacity-80 cursor-pointer"
             >
               <FiImage size={14} />
               Media
@@ -28,7 +28,7 @@ const AttachPost = () => {
 
             <button
               onClick={() => setIsOpen(true)}
-              className="flex items-center gap-1.5 text-zinc-400 transition hover:text-white"
+              className="flex items-center gap-1.5 text-zinc-400 transition hover:opacity-80 cursor-pointer"
             >
               <FiBook size={14} />
               Article
@@ -36,7 +36,7 @@ const AttachPost = () => {
 
             <button
               onClick={() => setIsOpen(true)}
-              className="flex items-center gap-1.5 text-zinc-400 transition hover:text-white"
+              className="flex items-center gap-1.5 text-zinc-400 transition hover:opacity-80 cursor-pointer"
             >
               <FiShoppingBag size={14} />
               Attach product
@@ -45,7 +45,7 @@ const AttachPost = () => {
 
           <button
             onClick={() => setIsOpen(true)}
-            className="rounded-full border border-zinc-900 px-5 py-1.5 text-xs font-semibold text-white cursor-pointer"
+            className="rounded-full border border-zinc-200/50 px-5 py-1.5 text-xs font-semibold text-zinc-500 cursor-pointer"
           >
             Post
           </button>

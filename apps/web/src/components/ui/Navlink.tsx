@@ -14,10 +14,10 @@ const Navlink = ({ item }: { item: MenuItemType }) => {
     <Link
       key={item.label}
       href={item.href}
-      className={`group ${item.className} flex items-center justify-between text-lg rounded-xl px-3 py-2 transition-colors ${
+      className={`group ${item.className} flex items-center justify-between text-lg rounded-xl px-3 py-2 ${
         isActive
-          ? "bg-zinc-900/80 font-semibold text-white"
-          : "text-zinc-400 hover:bg-zinc-950 hover:text-white"
+          ? "bg-zinc-100/50 font-medium text-zinc-900"
+          : "text-zinc-400 hover:bg-zinc-100/50"
       }`}
     >
       <div className="flex items-center gap-3">
@@ -26,7 +26,7 @@ const Navlink = ({ item }: { item: MenuItemType }) => {
       </div>
 
       {item.badge && (
-        <span className="flex h-4 min-w-4 items-center justify-center rounded-full bg-white px-1 text-[10px] font-bold text-zinc-950">
+        <span className="flex h-4 min-w-4 items-center justify-center rounded-full bg-orange-500 p-1 text-[10px] font-bold text-white">
           {item.badge}
         </span>
       )}

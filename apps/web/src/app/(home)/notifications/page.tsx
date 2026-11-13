@@ -67,9 +67,9 @@ const NotificationPage = () => {
   };
 
   return (
-    <main className="min-h-screen border-x border-zinc-900/50">
+    <main className="min-h-screen border-x border-zinc-200/50">
       <HeaderBar title="Notifications" />
-      <section className="divide-y divide-zinc-900/70">
+      <section className="divide-y divide-zinc-200/50">
         {notifications.map((notification) => (
           <div key={notification.id} className="flex gap-3 px-4 py-4">
             <div className="relative h-10 w-10 shrink-0">

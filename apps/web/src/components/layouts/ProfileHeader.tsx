@@ -10,7 +10,7 @@ const ProfileHeader = () => {
   const name = "John Doe";
   const username = "johndoe";
   return (
-    <header className="sticky top-0 z-20 border-b border-zinc-900/50 bg-zinc-950/90 backdrop-blur-xl">
+    <header className="sticky top-0 z-20 border-b border-zinc-200/50 backdrop-blur-xl">
       <div className="p-6">
         <Link href="/">
           <FaArrowLeft className="my-2" />
@@ -52,8 +52,8 @@ const ProfileHeader = () => {
               key={tab}
               className={`border-b-2 px-3 py-2.5 transition cursor-pointer ${
                 isActive
-                  ? "border-white font-semibold text-white"
-                  : "border-transparent text-zinc-500 hover:text-white"
+                  ? "border-zinc-200  font-semibold text-zinc-500"
+                  : "border-transparent text-zinc-500"
               }`}
             >
               {tab}

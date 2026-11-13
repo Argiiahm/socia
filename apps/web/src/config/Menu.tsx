@@ -24,11 +24,9 @@ export const menuItems: MenuItemType[] = [
     href: "/products",
   },
   {
-    label: "Notifications",
-    icon: FiBell,
-    href: "/notifications",
-    badge: 3,
-    className: "mt-4",
+    label: "Publications",
+    icon: PiBookmarksLight,
+    href: "/publications",
   },
   {
     label: "Messages",
@@ -36,9 +34,11 @@ export const menuItems: MenuItemType[] = [
     href: "/messages",
   },
   {
-    label: "Publications",
-    icon: PiBookmarksLight,
-    href: "/publications",
+    label: "Notifications",
+    icon: FiBell,
+    href: "/notifications",
+    badge: 3,
+    className: "mt-4",
   },
   {
     label: "Profile",

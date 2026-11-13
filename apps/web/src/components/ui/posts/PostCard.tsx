@@ -5,18 +5,18 @@ import {
   FiMoreHorizontal,
   FiRepeat,
 } from "react-icons/fi";
-import AttachPostArticle from "./AttachPostArticle";
+import AttachPostArticle from "./AttachPostPublished";
 import AttachPostProduct from "./AttachPostProduct";
 import Link from "next/link";
 import { PostType } from "@/types/PostTypes";
 
 const PostCard = ({ post }: { post: PostType }) => {
   return (
-    <article className="p-4 transition hover:bg-zinc-900/20">
+    <article className="p-4 cursor-pointer border-b border-zinc-200/50">
       <div className="flex gap-3">
         <Link
           href={post.username}
-          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-700 text-[10px] font-bold"
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-zinc-500 text-[10px] font-bold"
         >
           {post.avatar}
         </Link>
@@ -42,9 +42,7 @@ const PostCard = ({ post }: { post: PostType }) => {
             </button>
           </div>
 
-          <p className="mt-1 text-xs leading-[1.6] text-zinc-200">
-            {post.content}
-          </p>
+          <p className="mt-1 text-zinc-500">{post.content}</p>
 
           {/* PRODUCT ATTACHMENT */}
           {post.type === "product" && post.product && (

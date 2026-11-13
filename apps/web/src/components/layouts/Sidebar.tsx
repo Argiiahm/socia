@@ -5,7 +5,7 @@ import Navlink from "../ui/Navlink";
 
 const Sidebar = () => {
   return (
-    <aside className="fixed left-0 top-0 z-50 hidden h-screen w-64 flex-col border-r border-zinc-900/50 px-4 py-5 lg:flex">
+    <aside className="fixed left-0 top-0 z-50 hidden h-screen w-64 flex-col border-r border-zinc-200/50 px-4 py-5 lg:flex">
       <div className="mb-8 flex items-center gap-2 px-3">
         <div className="w-6 h-6">
           <Image
@@ -23,7 +23,7 @@ const Sidebar = () => {
           <Navlink key={item.label} item={item} />
         ))}
 
-        <button className="mt-4 flex w-full items-center justify-center gap-2 cursor-pointer rounded-full bg-white py-3 text-sm font-semibold text-zinc-950 transition hover:bg-zinc-200">
+        <button className="mt-4 flex w-full items-center justify-center gap-2 cursor-pointer rounded-full border border-zinc-200/50 py-3 text-sm font-medium text-zinc-500">
           <FiPlus size={18} />
           Post
         </button>

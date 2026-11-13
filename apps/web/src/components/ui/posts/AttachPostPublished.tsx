@@ -1,6 +1,6 @@
-const AttachPostArticle = ({ post }: any) => {
+const AttachPostPublished = ({ post }: any) => {
   return (
-    <div className="mt-3 rounded-xl border border-zinc-800 bg-zinc-900/80 p-3 transition hover:border-zinc-700">
+    <div className="mt-3 rounded-xl border border-zinc-200 bg-zinc-100/50 p-3">
       <h4 className="text-sm font-bold">{post.article.title}</h4>
       <p className="mt-1 leading-relaxed text-zinc-400">
         {post.article.description}
@@ -15,4 +15,4 @@ const AttachPostArticle = ({ post }: any) => {
   );
 };
 
-export default AttachPostArticle;
+export default AttachPostPublished;

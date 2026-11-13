@@ -8,47 +8,51 @@ import { FiPlus } from "react-icons/fi";
 const BottomNav = () => {
   const pathname = usePathname();
 
+  const renderMenu = (item: (typeof menuItems)[number]) => {
+    const Icon = item.icon;
+
+    const isActive =
+      pathname === item.href ||
+      (item.href !== "/" && pathname.startsWith(item.href));
+
+    return (
+      <Link
+        key={item.label}
+        href={item.href}
+        aria-label={item.label}
+        aria-current={isActive ? "page" : undefined}
+        className={`relative flex h-12 w-full items-center justify-center transition-colors ${
+          isActive ? "text-zinc-950" : "text-zinc-400 hover:text-zinc-700"
+        }`}
+      >
+        <div className="relative">
+          <Icon size={21} strokeWidth={1.8} />
+
+          {item.badge && (
+            <span className="absolute -right-2 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-red-500 px-1 text-[9px] font-semibold text-white">
+              {item.badge}
+            </span>
+          )}
+        </div>
+      </Link>
+    );
+  };
+
   return (
-    <nav className="fixed bottom-0 left-0 z-40 w-full border-t border-zinc-200 bg-white/95 px-2 pb-safe backdrop-blur-md dark:border-zinc-900 dark:bg-zinc-950/95 lg:hidden">
-      <div className="mx-auto flex max-w-lg items-center justify-around py-2">
-        {menuItems.map((item, index) => {
-          const Icon = item.icon;
-          const isActive =
-            pathname === item.href ||
-            (item.href !== "/" && pathname.startsWith(item.href));
+    <nav className="fixed inset-x-0 bottom-0 z-40 border-t border-zinc-200 bg-white/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-md lg:hidden">
+      <div className="mx-auto grid w-full max-w-lg grid-cols-7 items-center px-2">
+        {/* Left Menu */}
+        {menuItems.slice(0, 3).map(renderMenu)}
 
-          return (
-            <div key={item.label} className="contents">
-              <Link
-                href={item.href}
-                className={`relative flex flex-col items-center justify-center gap-2 px-2 py-1 transition ${
-                  isActive
-                    ? "text-zinc-950 dark:text-white"
-                    : "text-zinc-700 hover:text-zinc-700 dark:hover:text-zinc-200"
-                }`}
-              >
-                <div className="relative">
-                  <Icon size={21} />
+        <button
+          type="button"
+          className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl bg-zinc-900 text-white shadow-sm transition-all hover:bg-zinc-800 active:scale-95"
+        >
+          <FiPlus size={24} strokeWidth={2} />
+        </button>
 
-                  {item.badge && (
-                    <span className="absolute -right-2 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-red-500 px-1 text-[9px] font-semibold text-white">
-                      {item.badge}
-                    </span>
-                  )}
-                </div>
-              </Link>
-
-              {index === 2 && (
-                <button
-                  type="button"
-                  className="flex h-10 w-18 items-center justify-center rounded-lg bg-zinc-900 text-zinc-600 mx-1"
-                >
-                  <FiPlus size={24} />
-                </button>
-              )}
-            </div>
-          );
-        })}
+        {/* Right Menu */}
+        {menuItems.slice(3, 6).map(renderMenu)}
       </div>
     </nav>
   );
