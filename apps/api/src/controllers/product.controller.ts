@@ -1,8 +1,8 @@
 import * as ProductService from "../services/product.service";
 import type { Request, Response } from "express";
 import { asyncHandler } from "../utils/asyncHandler";
-import { ProductInput, ProductSchema } from "../schemas/product.schema";
 import createHttpError from "http-errors";
+import { ProductInput, ProductSchema } from "@socia/shared";
 
 export const GetProducts = asyncHandler(
   async (_req: Request, res: Response) => {

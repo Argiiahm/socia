@@ -5,7 +5,6 @@ import { RegisterInput, RegisterSchema } from "@/schemas/auth.schema";
 import { Register } from "@/services/auth.service";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaGoogle } from "react-icons/fa6";
@@ -13,7 +12,6 @@ import { FiLock, FiMail } from "react-icons/fi";
 
 const RegisterPage = () => {
   const [error, setError] = useState("");
-  const router = useRouter();
 
   const {
     register,
@@ -24,7 +22,6 @@ const RegisterPage = () => {
   const onSubmit = async (data: RegisterInput) => {
     try {
       await Register(data);
-      router.push(`/verify-email?email=${encodeURIComponent(data.email)}`);
     } catch (error) {
       setError(error instanceof Error ? error.message : "Failed Register");
     }

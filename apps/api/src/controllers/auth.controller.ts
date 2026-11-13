@@ -1,13 +1,13 @@
 import * as AuthService from "../services/auth.service.js";
 import type { Request, Response } from "express";
 import { CookieConfiguration } from "../constants/cookie.js";
+import { asyncHandler } from "../utils/asyncHandler";
 import {
   LoginInput,
   LoginSchema,
   RegisterInput,
   RegisterSchema,
-} from "../schemas/auth.schema";
-import { asyncHandler } from "../utils/asyncHandler";
+} from "@socia/shared";
 
 export const Register = asyncHandler(
   async (req: Request<object, object, RegisterInput>, res: Response) => {
