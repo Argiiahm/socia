@@ -1,5 +1,6 @@
 "use client";
 
+import { useAuthStore } from "@/stores/auth.store";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -7,18 +8,18 @@ import { FaArrowLeft } from "react-icons/fa6";
 
 const ProfileHeader = () => {
   const pathname = usePathname();
-  const name = "John Doe";
-  const username = "johndoe";
+  const { user } = useAuthStore();
+
   return (
-    <header className="sticky top-0 z-20 border-b border-zinc-200/50 backdrop-blur-xl">
+    <header className="sticky top-0 z-20 border-b border-zinc-200/50 bg-white">
       <div className="p-6">
         <Link href="/">
           <FaArrowLeft className="my-2" />
         </Link>
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-lg font-semibold">{name}</h1>
-            <p className="text-zinc-400 text-[12px]">{username}</p>
+            <h1 className="text-lg font-semibold">{user?.fullname}</h1>
+            <p className="text-zinc-400 text-[12px]">{user?.username}</p>
           </div>
           <Image
             className="w-18 h-18 object-cover rounded-full"
@@ -40,14 +41,14 @@ const ProfileHeader = () => {
         {["Posts", "Products", "Publications"].map((tab) => {
           const isPostTab = tab === "Posts";
           const isActive = isPostTab
-            ? pathname === `/@${username}`
-            : pathname === `/@${username}/${tab.toLowerCase()}`;
+            ? pathname === `/@${user?.username}`
+            : pathname === `/@${user?.username}/${tab.toLowerCase()}`;
           return (
             <Link
               href={
                 isPostTab
-                  ? `/@${username}`
-                  : `/@${username}/${tab.toLowerCase()}`
+                  ? `/@${user?.username}`
+                  : `/@${user?.username}/${tab.toLowerCase()}`
               }
               key={tab}
               className={`border-b-2 px-3 py-2.5 transition cursor-pointer ${

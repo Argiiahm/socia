@@ -1,6 +1,7 @@
 import { IconType } from "react-icons";
 import Input from "./Input";
 import Label from "./Label";
+import { FieldError } from "react-hook-form";
 
 type InputFormProps = {
   icon?: IconType;
@@ -8,7 +9,7 @@ type InputFormProps = {
   name: string;
   type: string;
   placeholder: string;
-  error: any;
+  error: FieldError | undefined;
 };
 
 const InputForm = ({

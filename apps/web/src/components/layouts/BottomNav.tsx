@@ -1,14 +1,18 @@
 "use client";
 
-import { menuItems } from "@/config/Menu";
+import { getMenuItems, type MenuItemType } from "@/config/Menu";
+import { useAuthStore } from "@/stores/auth.store";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FiPlus } from "react-icons/fi";
 
 const BottomNav = () => {
   const pathname = usePathname();
+  const { isAuthenticated, user } = useAuthStore();
 
-  const renderMenu = (item: (typeof menuItems)[number]) => {
+  const menuItems = getMenuItems(user?.username);
+
+  const renderMenu = (item: MenuItemType) => {
     const Icon = item.icon;
 
     const isActive =
@@ -28,7 +32,7 @@ const BottomNav = () => {
         <div className="relative">
           <Icon size={21} strokeWidth={1.8} />
 
-          {item.badge && (
+          {!!item.badge && (
             <span className="absolute -right-2 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-red-500 px-1 text-[9px] font-semibold text-white">
               {item.badge}
             </span>
@@ -44,8 +48,10 @@ const BottomNav = () => {
         {/* Left Menu */}
         {menuItems.slice(0, 3).map(renderMenu)}
 
+        {/* Create Button */}
         <button
           type="button"
+          aria-label="Create"
           className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl bg-zinc-900 text-white shadow-sm transition-all hover:bg-zinc-800 active:scale-95"
         >
           <FiPlus size={24} strokeWidth={2} />

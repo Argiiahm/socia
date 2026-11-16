@@ -72,3 +72,19 @@ export const Logout = asyncHandler(async (req: Request, res: Response) => {
     message: "Logout Successfully",
   });
 });
+
+export const Me = asyncHandler(async (req: Request, res: Response) => {
+  if (!req.user || !req.user.userId) {
+    return res.status(401).json({
+      success: false,
+      message: "Unauthrization",
+    });
+  }
+
+  const userId = req.user.userId;
+  const user = await AuthService.Me(userId);
+  return res.status(200).json({
+    success: true,
+    data: user,
+  });
+});

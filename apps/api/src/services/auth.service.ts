@@ -1,13 +1,13 @@
 import createHttpError from "http-errors";
 import bcrypt from "bcrypt";
 import { Prisma } from "../config/prisma.js";
-import { LoginInput, RegisterInput } from "../schemas/auth.schema.js";
 import { randomUUID } from "crypto";
 import {
   createAccessToken,
   createRefreshToken,
   verifyRefreshToken,
 } from "../utils/jwt";
+import { LoginInput, RegisterInput } from "@socia/shared";
 
 export const Register = async (data: RegisterInput) => {
   const [existUsername, existEmail] = await Promise.all([
@@ -132,4 +132,18 @@ export const Logout = async (refreshToken: string) => {
   });
 
   return;
+};
+
+export const Me = async (userId: string) => {
+  const user = await Prisma.user.findFirst({
+    where: { id: userId },
+    select: {
+      id: true,
+      fullname: true,
+      username: true,
+      email: true,
+      role: true,
+    },
+  });
+  return user;
 };

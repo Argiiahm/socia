@@ -1,18 +1,18 @@
 "use client";
 
+import Link from "next/link";
 import InputForm from "@/components/ui/input";
-import { RegisterInput, RegisterSchema } from "@/schemas/auth.schema";
 import { Register } from "@/services/auth.service";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "next/link";
+import { RegisterInput, RegisterSchema } from "@socia/shared";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { FaGoogle } from "react-icons/fa6";
 import { FiLock, FiMail } from "react-icons/fi";
 
 const RegisterPage = () => {
   const [error, setError] = useState("");
-
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -22,6 +22,7 @@ const RegisterPage = () => {
   const onSubmit = async (data: RegisterInput) => {
     try {
       await Register(data);
+      router.push("/login");
     } catch (error) {
       setError(error instanceof Error ? error.message : "Failed Register");
     }
@@ -72,7 +73,7 @@ const RegisterPage = () => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="flex w-full items-center justify-center gap-2 rounded-lg bg-zinc-300 cursor-pointer py-3 text-sm font-semibold text-zinc-950 transition hover:bg-zinc-200"
+          className="flex w-full items-center justify-center gap-2 rounded-lg bg-zinc-800 cursor-pointer py-3 text-sm font-medium text-white"
         >
           {isSubmitting ? "Please wait.." : "Sign up"}
         </button>
@@ -84,19 +85,11 @@ const RegisterPage = () => {
         <div className="h-px flex-1 bg-zinc-800" />
       </div>
 
-      <button
-        type="button"
-        className="flex w-full items-center justify-center gap-3 rounded-lg border border-zinc-800 bg-zinc-900/40 py-3 text-sm font-medium text-zinc-300 transition hover:bg-zinc-900"
-      >
-        <FaGoogle />
-        Continue with Google
-      </button>
-
       <p className="mt-8 text-center text-sm text-zinc-500">
         have an account?{" "}
         <Link
           href="/login"
-          className="font-medium text-white transition hover:text-zinc-300"
+          className="font-medium text-zinc-800 hover:underline"
         >
           Sign in
         </Link>

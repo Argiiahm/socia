@@ -1,4 +1,7 @@
 import type { CorsOptions } from "cors";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export const CorsConfiguration: CorsOptions = {
   origin: process.env.WEB_ORIGIN,

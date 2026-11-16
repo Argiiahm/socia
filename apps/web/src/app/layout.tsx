@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
+import AuthInitializer from "@/components/core/AuthInitializer";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -16,7 +17,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${bricolage.variable} h-full antialiased`}>
-      <body className="flex flex-col">{children}</body>
+      <body className="flex flex-col">
+        <AuthInitializer>{children}</AuthInitializer>
+      </body>
     </html>
   );
 }

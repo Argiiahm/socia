@@ -12,7 +12,7 @@ export type MenuItemType = {
   className?: string;
 };
 
-export const menuItems: MenuItemType[] = [
+export const getMenuItems = (username?: string): MenuItemType[] => [
   {
     label: "Home",
     icon: FiHome,
@@ -43,6 +43,6 @@ export const menuItems: MenuItemType[] = [
   {
     label: "Profile",
     icon: FiUser,
-    href: "/@argiiahm",
+    href: username ? `/@${username}` : "/login",
   },
 ];
