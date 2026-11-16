@@ -1,6 +1,6 @@
 import createHttpError from "http-errors";
 import { Prisma } from "../config/prisma.js";
-import { ProductInput } from "../schemas/product.schema.js";
+import { ProductInput } from "@socia/shared";
 
 export const GetProducts = async () => {
   return await Prisma.products.findMany({
@@ -23,8 +23,6 @@ export const GetProducts = async () => {
 };
 
 export const CreateProduct = async (data: ProductInput, userId: string) => {
-  if (!userId) throw createHttpError.Unauthorized("Unauthorization");
-
   return await Prisma.products.create({
     data: {
       ...data,

@@ -5,6 +5,7 @@ import { CorsConfiguration } from "./constants/cors.js";
 import { errorHandler } from "./middlewares/error.middleware.js";
 import AuthRoutes from "./routes/auth.route.js";
 import ProductRoutes from "./routes/product.route.js";
+import PublicationRoutes from "./routes/publication.route.js";
 
 const app = express();
 app.use(cors(CorsConfiguration));
@@ -13,6 +14,7 @@ app.use(cookieParser());
 
 app.use("/api/v1", AuthRoutes);
 app.use("/api/v1", ProductRoutes);
+app.use("/api/v1", PublicationRoutes);
 
 app.use(errorHandler);
 
