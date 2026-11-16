@@ -1,6 +1,6 @@
-import { PostType } from "@/types/PostTypes";
+import { ThreadType } from "@/types/ThreadTypes";
 
-export const posts: PostType[] = [
+export const posts: ThreadType[] = [
   {
     id: 1,
     name: "Nadia Putri",
@@ -39,12 +39,12 @@ export const posts: PostType[] = [
     avatar: "DP",
     time: "6h",
     content:
-      "Published a new piece on why I cut my newsletter from weekly to fortnightly, and why subscribers stayed.",
+      "publication a new piece on why I cut my newsletter from weekly to fortnightly, and why subscribers stayed.",
     likes: "513",
     comments: "38",
     reposts: "90",
-    type: "article",
-    article: {
+    type: "publication",
+    publication: {
       category: "SIGNAL & NOISE",
       title: "The quiet case for slower newsletters",
       description:

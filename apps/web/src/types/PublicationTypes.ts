@@ -13,8 +13,8 @@ export type PublicationTypes = {
     username: string;
   };
 
-  status: "draft" | "published" | "archived";
-  published_at: string | null;
+  status: "draft" | "publication" | "archived";
+  publication_at: string | null;
   created_at: string;
   updated_at: string;
 };

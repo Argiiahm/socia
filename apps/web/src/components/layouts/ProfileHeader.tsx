@@ -38,8 +38,8 @@ const ProfileHeader = () => {
         </div>
       </div>
       <div className="flex items-center px-2">
-        {["Posts", "Products", "Publications"].map((tab) => {
-          const isPostTab = tab === "Posts";
+        {["Threads", "Products", "Publications"].map((tab) => {
+          const isPostTab = tab === "Threads";
           const isActive = isPostTab
             ? pathname === `/@${user?.username}`
             : pathname === `/@${user?.username}/${tab.toLowerCase()}`;

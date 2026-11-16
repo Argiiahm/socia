@@ -1,4 +1,4 @@
-export type PostType = {
+export type ThreadType = {
   id: number;
   name: string;
   username: string;
@@ -8,13 +8,13 @@ export type PostType = {
   likes: string;
   comments: string;
   reposts: string;
-  type: "text" | "product" | "article";
+  type: "text" | "product" | "publication";
   product?: {
     name: string;
     description: string;
     price: string;
   };
-  article?: {
+  publication?: {
     category: string;
     title: string;
     description: string;

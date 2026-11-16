@@ -5,33 +5,33 @@ import {
   FiMoreHorizontal,
   FiRepeat,
 } from "react-icons/fi";
-import AttachPostArticle from "./AttachPostPublished";
-import AttachPostProduct from "./AttachPostProduct";
 import Link from "next/link";
-import { PostType } from "@/types/PostTypes";
+import AttachThreadProduct from "./AttachThreadProduct";
+import { ThreadType } from "@/types/ThreadTypes";
+import AttachThreadPublication from "./AttachThreadPublished";
 
-const PostCard = ({ post }: { post: PostType }) => {
+const ThreadCard = ({ thread }: { thread: ThreadType }) => {
   return (
     <article className="p-4 cursor-pointer border-b border-zinc-200/50">
       <div className="flex gap-3">
         <Link
-          href={post.username}
+          href={thread.username}
           className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-zinc-500 text-[10px] font-bold"
         >
-          {post.avatar}
+          {thread.avatar}
         </Link>
 
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-1.5">
             <Link
-              href={post.username}
+              href={thread.username}
               className="text-xs font-bold hover:underline"
             >
-              {post.name}
+              {thread.name}
             </Link>
 
             <span className="truncate text-[10px] text-zinc-500">
-              {post.username} · {post.time}
+              {thread.username} · {thread.time}
             </span>
 
             <button
@@ -42,34 +42,34 @@ const PostCard = ({ post }: { post: PostType }) => {
             </button>
           </div>
 
-          <p className="mt-1 text-zinc-500">{post.content}</p>
+          <p className="mt-1 text-zinc-500">{thread.content}</p>
 
           {/* PRODUCT ATTACHMENT */}
-          {post.type === "product" && post.product && (
-            <AttachPostProduct post={post} />
+          {thread.type === "product" && thread.product && (
+            <AttachThreadProduct thread={thread} />
           )}
 
           {/* ARTICLE ATTACHMENT */}
-          {post.type === "article" && post.article && (
-            <AttachPostArticle post={post} />
+          {thread.type === "publication" && thread.publication && (
+            <AttachThreadPublication thread={thread} />
           )}
 
-          {/* POST ACTIONS */}
+          {/* thread ACTIONS */}
           <div className="mt-3 flex items-center justify-between text-zinc-500">
             <div className="flex items-center gap-6">
               <button className="flex items-center gap-1.5 text-[10px]">
                 <FiHeart size={14} />
-                {post.likes}
+                {thread.likes}
               </button>
 
               <button className="flex items-center gap-1.5 text-[10px]">
                 <FiMessageSquare size={14} />
-                {post.comments}
+                {thread.comments}
               </button>
 
               <button className="flex items-center gap-1.5 text-[10px]">
                 <FiRepeat size={14} />
-                {post.reposts}
+                {thread.reposts}
               </button>
             </div>
 
@@ -86,4 +86,4 @@ const PostCard = ({ post }: { post: PostType }) => {
   );
 };
 
-export default PostCard;
+export default ThreadCard;

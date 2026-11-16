@@ -1,4 +1,4 @@
-import PostsSection from "@/components/ui/posts/Posts";
+import PostsSection from "@/components/ui/threads/Threads";
 import { notFound } from "next/navigation";
 
 const ProfileCreator = async ({
