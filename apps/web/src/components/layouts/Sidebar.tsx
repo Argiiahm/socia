@@ -10,7 +10,7 @@ const Sidebar = () => {
   const menuItems = getMenuItems(user?.username);
 
   return (
-    <aside className="fixed left-0 top-0 z-50 hidden h-screen w-64 flex-col border-r border-zinc-200/50 px-4 py-5 lg:flex">
+    <aside className="fixed left-0 top-0 z-30 hidden h-screen w-64 flex-col border-r border-zinc-200/50 px-4 py-5 lg:flex xl:left-[calc(50%_-_40rem)]">
       <div className="mb-8 flex items-center gap-2 px-3">
         <div className="w-6 h-6">
           <Image

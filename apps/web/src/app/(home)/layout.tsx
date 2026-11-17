@@ -17,16 +17,22 @@ const UserLayout = ({ children }: { children: React.ReactNode }) => {
 
 const UserLayoutContent = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
+  const isProductsPage = pathname === "/products";
+
   return (
     <main className="min-h-screen w-full">
-      <Sidebar />
-      <section
-        className={`mx-auto min-h-screen min-w-0 w-full ${pathname === "/products" ? "lg:pl-64 xl:pl-[280px]" : "lg:pl-0 xl:pl-0"} pl-0  ${
-          pathname === "/products" ? "max-w-[1560px]" : "max-w-2xl"
-        }`}
-      >
-        {children}
-      </section>
+      <div className="mx-auto min-h-screen w-full max-w-7xl">
+        <Sidebar />
+        <section
+          className={`mx-auto min-h-screen min-w-0 pb-16 lg:pb-0 ${
+            isProductsPage
+              ? "w-full max-w-none lg:pl-64"
+              : "w-full max-w-2xl"
+          }`}
+        >
+          {children}
+        </section>
+      </div>
       <BottomNav />
     </main>
   );
