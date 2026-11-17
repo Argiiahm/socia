@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { FiBook, FiImage, FiShoppingBag } from "react-icons/fi";
 
 const PostModal = ({
@@ -11,24 +11,23 @@ const PostModal = ({
   setIsOpen: (open: boolean) => void;
 }) => {
   const onFocus = useRef<HTMLTextAreaElement>(null);
-  useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-      onFocus.current?.focus();
-    } else {
-      document.body.style.overflow = "unset";
-    }
+  useLayoutEffect(() => {
+    if (!open) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    onFocus.current?.focus();
 
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = previousOverflow;
     };
   }, [open]);
   return (
     <>
       {open && (
-        <section className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-          <div className="w-full max-w-md rounded-lg bg-zinc-200 border border-zinc-300">
-            <div className="flex items-center justify-between border-b border-zinc-300 px-4 py-2">
+        <section className="fixed inset-0 z-50 flex items-start pt-10 justify-center bg-black/40">
+          <div className="w-full max-w-md rounded-lg bg-white border border-zinc-200">
+            <div className="flex items-center justify-between border-b border-zinc-200 px-4 py-2">
               <h1 className="font-medium">Create Post</h1>
               <button
                 onClick={() => setIsOpen(false)}
@@ -46,7 +45,7 @@ const PostModal = ({
                   className="w-full resize-none bg-transparent text-sm outline-none placeholder:text-zinc-500 p-4"
                 />
 
-                <div className="mt-3 flex flex-wrap items-center justify-between  border-t border-zinc-300 px-4 py-2">
+                <div className="mt-3 flex flex-wrap items-center justify-between  border-t border-zinc-200 px-4 py-2">
                   <div className="flex flex-wrap items-center text-sm gap-4">
                     <button className="flex items-center gap-1.5 text-zinc-400">
                       <FiImage size={14} />
@@ -55,16 +54,16 @@ const PostModal = ({
 
                     <button className="flex items-center gap-1.5 text-zinc-400">
                       <FiBook size={14} />
-                      Article
+                      Publication
                     </button>
 
                     <button className="flex items-center gap-1.5 text-zinc-400">
                       <FiShoppingBag size={14} />
-                      Attach product
+                      Product
                     </button>
                   </div>
 
-                  <button className="rounded-full border border-zinc-300 px-5 py-1.5 text-xs font-semibold text-zinc-5  00 cursor-pointer">
+                  <button className="rounded-full border border-zinc-200 px-5 py-1.5 text-xs font-semibold text-zinc-5  00 cursor-pointer">
                     Post
                   </button>
                 </div>
