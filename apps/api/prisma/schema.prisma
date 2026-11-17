@@ -19,6 +19,11 @@ enum Role {
   ADMIN
 }
 
+enum ContentType {
+  PRODUCT
+  PUBLICATION
+}
+
 model User {
   id       String @id @default(uuid())
   fullname String
@@ -28,11 +33,12 @@ model User {
   role     Role   @default(USER)
 
   refreshTokens RefreshToken[]
+  threads       Threads[]
   products      Products[]
+  publications  Publications[]
 
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @updatedAt
-  publications Publications[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model RefreshToken {
@@ -62,6 +68,8 @@ model Products {
   description String
   features    String[]
 
+  threads Threads[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -77,6 +85,26 @@ model Publications {
 
   title   String
   content String
+
+  threads Threads[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Threads {
+  id     String @id @default(uuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  content            String
+  includeContentType ContentType[] @default([])
+
+  productId String?
+  product   Products? @relation(fields: [productId], references: [id], onUpdate: Cascade)
+
+  publicationId String?
+  publication   Publications? @relation(fields: [publicationId], references: [id], onUpdate: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

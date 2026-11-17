@@ -1,24 +1,26 @@
+export type ContentType = "PRODUCT" | "PUBLICATION";
+
 export type ThreadType = {
-  id: number;
-  name: string;
-  username: string;
-  avatar: string;
-  time: string;
+  id: string;
   content: string;
-  likes: string;
-  comments: string;
-  reposts: string;
-  type: "text" | "product" | "publication";
+  includeContentType: ContentType[];
+  user: {
+    username: string;
+  };
   product?: {
+    id: string;
     name: string;
-    description: string;
-    price: string;
-  };
+    price: number;
+    thumbnail: string;
+  } | null;
   publication?: {
-    category: string;
+    id: string;
+    image: string;
     title: string;
-    description: string;
-    readTime: string;
-    reactions: string;
-  };
+    content: string;
+    user: {
+      username: string;
+    };
+  } | null;
+  createdAt: string;
 };
