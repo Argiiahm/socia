@@ -1,7 +1,25 @@
-const HeaderBar = ({ title }: { title: string }) => {
+import Link from "next/link";
+import { FiArrowLeft } from "react-icons/fi";
+
+const HeaderBar = ({
+  title,
+  backHref,
+}: {
+  title: string;
+  backHref?: string;
+}) => {
   return (
-    <header className="sticky top-0 z-20 border-b border-zinc-200/50 bg-white">
-      <div className="px-4 py-3">
+    <header className="sticky top-0 z-20 border-b border-zinc-200/50 bg-white/95 backdrop-blur">
+      <div className="flex items-center gap-5 px-4 py-3">
+        {backHref && (
+          <Link
+            href={backHref}
+            aria-label="Back"
+            className="rounded-full p-2 transition hover:bg-zinc-100"
+          >
+            <FiArrowLeft size={19} />
+          </Link>
+        )}
         <h1 className="text-lg font-semibold">{title}</h1>
       </div>
     </header>

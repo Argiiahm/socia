@@ -9,6 +9,7 @@ import { ThreadType } from "@/types/ThreadTypes";
 import AttachThreadPublication from "./AttachThreadPublished";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import Link from "next/link";
 
 dayjs.extend(relativeTime);
 
@@ -20,7 +21,7 @@ const ThreadCard = ({ thread }: { thread: ThreadType }) => {
 
   return (
     <article className="p-4 border-b border-zinc-200/50">
-      <div className="flex gap-3">
+      <Link href={`/post/${thread.id}`} className="flex gap-3">
         <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-zinc-500 text-[10px] font-bold">
           ?
         </div>
@@ -66,7 +67,7 @@ const ThreadCard = ({ thread }: { thread: ThreadType }) => {
             </div>
           </div>
         </div>
-      </div>
+      </Link>
     </article>
   );
 };

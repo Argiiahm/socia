@@ -10,7 +10,7 @@ import { authentication } from "../middlewares/authentication.middleware";
 const router = Router();
 
 router.get("/threads", getThreads);
-router.get("/thread/:id", getThread);
+router.get("/thread/:threadId", getThread);
 router.post("/thread", authentication, createThread);
 router.delete("/thread/:id", authentication, deleteThread);
 

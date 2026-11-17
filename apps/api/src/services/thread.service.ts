@@ -40,12 +40,18 @@ export const getThreads = async () => {
 };
 
 export const getThread = async (threadId: string) => {
-  return Prisma.threads.findFirst({
+  const thread = await Prisma.threads.findUnique({
     where: { id: threadId },
     select: {
       id: true,
       content: true,
       includeContentType: true,
+      createdAt: true,
+      user: {
+        select: {
+          username: true,
+        },
+      },
       product: {
         select: {
           id: true,
@@ -69,6 +75,10 @@ export const getThread = async (threadId: string) => {
       },
     },
   });
+
+  if (!thread) throw createHttpError.NotFound("Thread not found");
+
+  return thread;
 };
 
 export const createThreads = async (
