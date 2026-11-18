@@ -17,6 +17,19 @@ export const getPublications = async () => {
     orderBy: {
       createdAt: "desc",
     },
+    select: {
+      id: true,
+      image: true,
+      title: true,
+      content: true,
+      createdAt: true,
+      user: {
+        select: {
+          id: true,
+          username: true,
+        },
+      },
+    },
   });
 };
 
@@ -50,6 +63,15 @@ export const getPublicationsByUsername = async (username: string) => {
 export const getPublication = async (publicationId: string) => {
   const publication = await Prisma.publications.findUnique({
     where: { id: publicationId },
+    include: {
+      user: {
+        select: {
+          id: true,
+          fullname: true,
+          username: true,
+        },
+      },
+    },
   });
 
   if (!publication) {

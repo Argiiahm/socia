@@ -1,20 +1,12 @@
 export type PublicationTypes = {
   id: string;
-  slug: string;
+  image: string;
   title: string;
-  excerpt: string | null;
   content: string;
-  thumbnail: string | null;
-  reading_time: number;
-
-  author: {
+  createdAt: string;
+  user: {
     id: string;
     fullname: string;
     username: string;
   };
-
-  status: "draft" | "publication" | "archived";
-  publication_at: string | null;
-  created_at: string;
-  updated_at: string;
 };

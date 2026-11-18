@@ -1,38 +1,18 @@
+import { PublicationTypes } from "@/types/PublicationTypes";
 import Image from "next/image";
 import Link from "next/link";
-
-type PublicationCardData = {
-  id: string;
-  image: string;
-  title: string;
-  content: string;
-  user: {
-    username: string;
-  };
-};
 
 const PublicationCard = ({
   publication,
 }: {
-  publication?: PublicationCardData;
+  publication: PublicationTypes;
 }) => {
-  const pub = publication ?? {
-    id: "the-journey-everything-starts-somewhere",
-    image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e",
-    title: "The Journey: Everything Starts Somewhere",
-    content:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, dolores.",
-    user: {
-      username: "Argiiahm",
-    },
-  };
-
   return (
-    <Link href={`/publications/${pub.id}`}>
+    <Link href={`/publications/${publication.id}`}>
       <article className="group relative mt-3 h-56 w-full cursor-pointer overflow-hidden rounded-xl">
         <Image
-          src={pub.image}
-          alt={pub.title}
+          src={publication.image}
+          alt={publication.title}
           fill
           sizes="(max-width: 768px) 100vw, 600px"
           className="object-cover"
@@ -42,13 +22,13 @@ const PublicationCard = ({
 
         <div className="absolute right-0 bottom-0 left-0 p-4">
           <h4 className="mb-1 line-clamp-2 text-sm leading-snug font-bold text-white">
-            {pub.title}
+            {publication.title}
           </h4>
           <p className="font-content line-clamp-2 leading-relaxed text-zinc-300">
-            {pub.content}
+            {publication.content}
           </p>
-          <p className="mb-1.5 text-[10px] font-medium text-zinc-400">
-            @{pub.user.username}
+          <p className="mb-1.5 pt-2 text-[10px] font-medium text-zinc-400">
+            @{publication.user.username}
           </p>
         </div>
       </article>
