@@ -18,5 +18,20 @@ export const LoginSchema = z.object({
   password: z.string().min(8, "Password must be at least 8 characters long"),
 });
 
+export const UpdateUserSchema = z.object({
+  fullname: z
+    .string()
+    .min(1, "Fullname is required")
+    .max(100, "Fullname must be less than 100 characters")
+    .optional(),
+  username: z
+    .string()
+    .min(1, "Username is required")
+    .max(30, "Username must be less than 30 characters")
+    .optional(),
+  email: z.string().email("Invalid email address").optional(),
+});
+
 export type RegisterInput = z.infer<typeof RegisterSchema>;
 export type LoginInput = z.infer<typeof LoginSchema>;
+export type UpdateUserInput = z.infer<typeof UpdateUserSchema>;

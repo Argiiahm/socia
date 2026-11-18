@@ -16,6 +16,19 @@ export const getPublications = asyncHandler(
   },
 );
 
+export const getPublicationsByUsername = asyncHandler(
+  async (req: Request<{ username: string }>, res: Response) => {
+    const publications = await PublicationService.getPublicationsByUsername(
+      req.params.username,
+    );
+    return res.status(200).json({
+      success: true,
+      message: "Successfully fetch publications",
+      data: publications,
+    });
+  },
+);
+
 export const getPublication = asyncHandler(
   async (req: Request<{ publicationId: string }>, res: Response) => {
     const publication = await PublicationService.getPublication(

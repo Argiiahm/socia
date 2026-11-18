@@ -1,21 +1,7 @@
-"use client";
-
-import ThreadCard from "./ThreadCard";
-import { useEffect, useState } from "react";
-import { getThreads } from "@/services/thread.service";
 import { ThreadType } from "@/types/ThreadTypes";
+import ThreadCard from "./ThreadCard";
 
-const ThreadsSection = () => {
-  const [threads, setThreads] = useState<ThreadType[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await getThreads();
-      setThreads(response.data);
-    };
-    fetchData();
-  }, []);
-
+const ThreadsSection = ({ threads }: { threads: ThreadType[] }) => {
   return (
     <section>
       {threads.map((post) => (

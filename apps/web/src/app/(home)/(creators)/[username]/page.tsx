@@ -1,4 +1,4 @@
-import PostsSection from "@/components/ui/threads/Threads";
+import ThreadsCreator from "@/components/ui/creator/ThreadsCreator";
 import { notFound } from "next/navigation";
 
 const ProfileCreator = async ({
@@ -12,7 +12,7 @@ const ProfileCreator = async ({
 
   return (
     <main className="min-h-screen">
-      <PostsSection />
+      <ThreadsCreator />
     </main>
   );
 };

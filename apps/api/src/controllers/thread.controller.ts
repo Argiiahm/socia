@@ -13,6 +13,19 @@ export const getThreads = asyncHandler(async (_req: Request, res: Response) => {
   });
 });
 
+export const getThreadsByUsername = asyncHandler(
+  async (req: Request<{ username: string }>, res: Response) => {
+    const threads = await ThreadService.getThreadsByUsername(
+      req.params.username,
+    );
+    return res.status(200).json({
+      success: true,
+      message: "Successfully Fetch Threads",
+      data: threads,
+    });
+  },
+);
+
 export const getThread = asyncHandler(
   async (req: Request<{ threadId: string }>, res: Response) => {
     const thread = await ThreadService.getThread(req.params.threadId);

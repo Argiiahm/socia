@@ -5,6 +5,7 @@ export type ThreadType = {
   content: string;
   includeContentType: ContentType[];
   user: {
+    id: string;
     username: string;
   };
   product?: {

@@ -1,43 +1,57 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const PublicationCard = () => {
+type PublicationCardData = {
+  id: string;
+  image: string;
+  title: string;
+  content: string;
+  user: {
+    username: string;
+  };
+};
+
+const PublicationCard = ({
+  publication,
+}: {
+  publication?: PublicationCardData;
+}) => {
+  const pub = publication ?? {
+    id: "the-journey-everything-starts-somewhere",
+    image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e",
+    title: "The Journey: Everything Starts Somewhere",
+    content:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, dolores.",
+    user: {
+      username: "Argiiahm",
+    },
+  };
+
   return (
-    <Link href="/publications/the-journey-everything-starts-somewhere">
-      <div className="mt-3 cursor-pointer overflow-hidden border border-zinc-200/50">
-        <div className="relative aspect-[16/9] object-cover w-full overflow-hidden">
-          <Image
-            src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e"
-            alt="Publication thumbnail"
-            fill
-            sizes="(max-width: 768px) 100vw, 600px"
-            className="object-cover"
-          />
-        </div>
+    <Link href={`/publications/${pub.id}`}>
+      <article className="group relative mt-3 h-56 w-full cursor-pointer overflow-hidden rounded-xl">
+        <Image
+          src={pub.image}
+          alt={pub.title}
+          fill
+          sizes="(max-width: 768px) 100vw, 600px"
+          className="object-cover"
+        />
 
-        <div className="p-3">
-          <div className="flex items-center gap-2 mb-2">
-            <Link
-              href=""
-              className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-[10px] font-bold text-zinc-400"
-            >
-              AG
-            </Link>
-            <p className="text-[14px] text-zinc-500">Argiiahm</p>
-          </div>
-          <p className="font-medium text-sm leading-relaxed text-zinc-400">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam,
-            dolores. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Aperiam, dolores...
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+
+        <div className="absolute right-0 bottom-0 left-0 p-4">
+          <h4 className="mb-1 line-clamp-2 text-sm leading-snug font-bold text-white">
+            {pub.title}
+          </h4>
+          <p className="line-clamp-2 text-[11px] leading-relaxed text-zinc-300">
+            {pub.content}
           </p>
-
-          <div className="mt-2 flex items-center gap-2 text-[10px] text-zinc-500">
-            <span>2 Min</span>
-            <span>·</span>
-            <span>Argiiahm</span>
-          </div>
+          <p className="mb-1.5 text-[10px] font-medium text-zinc-400">
+            @{pub.user.username}
+          </p>
         </div>
-      </div>
+      </article>
     </Link>
   );
 };

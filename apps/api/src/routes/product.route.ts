@@ -4,12 +4,14 @@ import {
   CreateProduct,
   DeleteProduct,
   GetProducts,
+  GetProductsByUsername,
   UpdateProduct,
 } from "../controllers/product.controller";
 
 const router = Router();
 
 router.get("/products", GetProducts);
+router.get("/user/:username/products", GetProductsByUsername);
 router.post("/product", authentication, CreateProduct);
 router.put("/product/:productId", authentication, UpdateProduct);
 router.delete("/product/:productId", authentication, DeleteProduct);

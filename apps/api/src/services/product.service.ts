@@ -22,6 +22,34 @@ export const GetProducts = async () => {
   });
 };
 
+export const GetProductsByUsername = async (username: string) => {
+  return await Prisma.products.findMany({
+    where: {
+      user: {
+        username,
+      },
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+    select: {
+      id: true,
+      thumbnail: true,
+      name: true,
+      description: true,
+      price: true,
+      images: true,
+      features: true,
+      user: {
+        select: {
+          id: true,
+          username: true,
+        },
+      },
+    },
+  });
+};
+
 export const CreateProduct = async (data: ProductInput, userId: string) => {
   return await Prisma.products.create({
     data: {

@@ -11,6 +11,7 @@ export const getThreads = async () => {
       createdAt: true,
       user: {
         select: {
+          id: true,
           username: true,
         },
       },
@@ -30,6 +31,54 @@ export const getThreads = async () => {
           content: true,
           user: {
             select: {
+              id: true,
+              username: true,
+            },
+          },
+        },
+      },
+    },
+  });
+};
+
+export const getThreadsByUsername = async (username: string) => {
+  return await Prisma.threads.findMany({
+    where: {
+      user: {
+        username,
+      },
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+    select: {
+      id: true,
+      content: true,
+      includeContentType: true,
+      createdAt: true,
+      user: {
+        select: {
+          id: true,
+          username: true,
+        },
+      },
+      product: {
+        select: {
+          id: true,
+          thumbnail: true,
+          name: true,
+          price: true,
+        },
+      },
+      publication: {
+        select: {
+          id: true,
+          image: true,
+          title: true,
+          content: true,
+          user: {
+            select: {
+              id: true,
               username: true,
             },
           },
@@ -49,6 +98,7 @@ export const getThread = async (threadId: string) => {
       createdAt: true,
       user: {
         select: {
+          id: true,
           username: true,
         },
       },
@@ -68,6 +118,7 @@ export const getThread = async (threadId: string) => {
           content: true,
           user: {
             select: {
+              id: true,
               username: true,
             },
           },

@@ -1,11 +1,17 @@
-import { ProductTypes } from "@/types/ProductTypes";
 import Image from "next/image";
 import Link from "next/link";
 
-const ProductCard = ({ product }: { product: ProductTypes }) => {
+type ProductCardData = {
+  id: string | number;
+  name: string;
+  price: number;
+  thumbnail: string;
+};
+
+const ProductCard = ({ product }: { product: ProductCardData }) => {
   return (
     <article className="group min-w-0 overflow-hidden border border-zinc-200/50">
-      <Link href={`/products/${product.slug}`}>
+      <Link href={`/products/${product.id}`}>
         <div className="relative aspect-[4/3] overflow-hidden bg-zinc-200">
           <Image
             src={product.thumbnail}

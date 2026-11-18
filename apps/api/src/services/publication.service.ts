@@ -20,6 +20,33 @@ export const getPublications = async () => {
   });
 };
 
+export const getPublicationsByUsername = async (username: string) => {
+  return Prisma.publications.findMany({
+    where: {
+      user: {
+        username,
+      },
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+    select: {
+      id: true,
+      image: true,
+      title: true,
+      content: true,
+      createdAt: true,
+      user: {
+        select: {
+          id: true,
+          fullname: true,
+          username: true,
+        },
+      },
+    },
+  });
+};
+
 export const getPublication = async (publicationId: string) => {
   const publication = await Prisma.publications.findUnique({
     where: { id: publicationId },
