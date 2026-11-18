@@ -15,6 +15,7 @@ const PostModal = ({
     if (!open) return;
 
     const previousOverflow = document.body.style.overflow;
+
     document.body.style.overflow = "hidden";
     onFocus.current?.focus();
 

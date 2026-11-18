@@ -21,14 +21,18 @@ const ThreadCard = ({ thread }: { thread: ThreadType }) => {
 
   return (
     <article className="p-4 border-b border-zinc-200/50">
-      <Link href={`/post/${thread.id}`} className="flex gap-3">
+      <div className="flex gap-3">
         <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-zinc-500 text-[10px] font-bold">
           ?
         </div>
-
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-1.5">
-            <span className="text-xs font-bold">{thread.user?.username}</span>
+            <Link
+              href={`/@${thread.user.username}`}
+              className="text-xs font-bold hover:underline"
+            >
+              {thread.user.username}
+            </Link>
 
             <span className="truncate text-[10px] text-zinc-500">
               {dayjs(thread.createdAt).fromNow()}
@@ -42,7 +46,9 @@ const ThreadCard = ({ thread }: { thread: ThreadType }) => {
             </button>
           </div>
 
-          <p className="mt-1 text-zinc-500">{thread.content}</p>
+          <Link href={`/post/${thread.id}`}>
+            <p className="mt-1 text-zinc-500">{thread.content}</p>
+          </Link>
 
           {/* PRODUCT ATTACHMENT */}
           {hasProduct && <AttachThreadProduct thread={thread} />}
@@ -67,7 +73,7 @@ const ThreadCard = ({ thread }: { thread: ThreadType }) => {
             </div>
           </div>
         </div>
-      </Link>
+      </div>
     </article>
   );
 };

@@ -18,3 +18,8 @@ body {
   font-family: var(--font-sans);
   zoom: 110%;
 }
+
+html {
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
