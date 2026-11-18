@@ -44,7 +44,7 @@ const PublicationCard = ({
           <h4 className="mb-1 line-clamp-2 text-sm leading-snug font-bold text-white">
             {pub.title}
           </h4>
-          <p className="line-clamp-2 text-[11px] leading-relaxed text-zinc-300">
+          <p className="font-content line-clamp-2 leading-relaxed text-zinc-300">
             {pub.content}
           </p>
           <p className="mb-1.5 text-[10px] font-medium text-zinc-400">

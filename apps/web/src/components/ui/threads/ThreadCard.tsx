@@ -47,7 +47,7 @@ const ThreadCard = ({ thread }: { thread: ThreadType }) => {
           </div>
 
           <Link href={`/post/${thread.id}`}>
-            <p className="mt-1 text-zinc-500">{thread.content}</p>
+            <p className="font-content mt-1 text-zinc-900">{thread.content}</p>
           </Link>
 
           {/* PRODUCT ATTACHMENT */}

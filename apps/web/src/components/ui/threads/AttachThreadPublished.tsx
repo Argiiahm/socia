@@ -16,7 +16,7 @@ const AttachThreadPublication = ({ thread }: { thread: ThreadType }) => {
         <h4 className="text-sm font-bold text-white leading-snug line-clamp-2 mb-1">
           {pub.title}
         </h4>
-        <p className="text-[11px] text-zinc-300 leading-relaxed line-clamp-2">
+        <p className="font-content text-zinc-300 leading-relaxed line-clamp-2">
           {pub.content}
         </p>
         <p className="text-[10px] font-medium text-zinc-400 mb-1.5">

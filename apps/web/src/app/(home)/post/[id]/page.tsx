@@ -74,7 +74,7 @@ const DetailThread = () => {
                 <FiMoreHorizontal size={18} />
               </button>
             </div>
-            <p className="mt-3 whitespace-pre-wrap text-[15px] leading-relaxed text-zinc-800">
+            <p className="font-content mt-3 whitespace-pre-wrap leading-relaxed text-zinc-800">
               {thread.content}
             </p>
 

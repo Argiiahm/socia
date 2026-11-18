@@ -26,7 +26,7 @@ const ProductCard = ({ product }: { product: ProductCardData }) => {
           <h3 className="truncate text-[11px] font-semibold text-zinc-500">
             {product.name}
           </h3>
-          <p className="mt-1 text-sm text-zinc-300">
+          <p className="font-content mt-1 text-zinc-300">
             Lorem ipsum dolor, sit amet consectetur...
           </p>
           <p className="mt-2 text-sm font-bold text-zinc-400">

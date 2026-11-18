@@ -24,7 +24,7 @@ const DetailProductCard = ({ product }: { product: ProductTypes }) => {
           {product.name}
         </h1>
 
-        <p className="mt-3 text-xs leading-relaxed text-zinc-300">
+        <p className="font-content mt-3 leading-relaxed text-zinc-300">
           {product.description}
         </p>
 
