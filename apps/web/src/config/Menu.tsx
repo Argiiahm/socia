@@ -1,8 +1,11 @@
-import { FiHome, FiBell, FiUser } from "react-icons/fi";
 import type { IconType } from "react-icons";
-import { TbMessages } from "react-icons/tb";
-import { PiBookmarksLight } from "react-icons/pi";
-import { HiOutlineShoppingBag } from "react-icons/hi2";
+import {
+  AiFillHome,
+  AiFillMessage,
+  AiFillShopping,
+  AiFillSwitcher,
+} from "react-icons/ai";
+import { FaBell, FaUser } from "react-icons/fa6";
 
 export type MenuItemType = {
   label: string;
@@ -15,34 +18,34 @@ export type MenuItemType = {
 export const getMenuItems = (username?: string): MenuItemType[] => [
   {
     label: "Home",
-    icon: FiHome,
+    icon: AiFillHome,
     href: "/",
   },
   {
     label: "Products",
-    icon: HiOutlineShoppingBag,
+    icon: AiFillShopping,
     href: "/products",
   },
   {
     label: "Publications",
-    icon: PiBookmarksLight,
+    icon: AiFillSwitcher,
     href: "/publications",
   },
   {
     label: "Messages",
-    icon: TbMessages,
+    icon: AiFillMessage,
     href: "/messages",
   },
   {
     label: "Notifications",
-    icon: FiBell,
+    icon: FaBell,
     href: "/notifications",
     badge: 3,
     className: "mt-4",
   },
   {
     label: "Profile",
-    icon: FiUser,
+    icon: FaUser,
     href: username ? `/@${username}` : "/login",
   },
 ];

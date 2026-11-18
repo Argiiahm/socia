@@ -59,3 +59,15 @@ export const getMe = async () => {
     throw new Error("Something went wrong");
   }
 };
+
+export const Logout = async () => {
+  try {
+    const response = await apiClient.post("/api/v1/auth/logout");
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError<{ message: string }>(error)) {
+      throw new Error(error.response?.data?.message ?? "Failed Logout");
+    }
+    throw new Error("Something went wrong");
+  }
+};
