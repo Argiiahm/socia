@@ -73,7 +73,7 @@ const Sidebar = () => {
               >
                 <FiMoreHorizontal size={18} />
               </button>
-              <button className="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg bg-zinc-900 py-2 text-sm font-medium text-white">
+              <button className="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg border border-zinc-200 py-2 text-sm font-medium text-zinc-900">
                 Socia Studio
                 <AiOutlineSwap size={18} />
               </button>

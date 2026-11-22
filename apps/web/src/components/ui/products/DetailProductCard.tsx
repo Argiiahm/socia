@@ -7,7 +7,7 @@ const DetailProductCard = ({ product }: { product: ProductTypes }) => {
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.15fr_1fr]">
       <section className="min-w-0">
-        <div className="relative aspect-[5/4] overflow-hidden rounded-xl border border-zinc-200/50 bg-zinc-900/40">
+        <div className="relative aspect-[5/4] overflow-hidden rounded-xl border border-zinc-100">
           <Image
             src={product.thumbnail}
             alt={product.name}
@@ -56,16 +56,16 @@ const DetailProductCard = ({ product }: { product: ProductTypes }) => {
         <div className="mt-4 flex items-center justify-between rounded-xl border border-zinc-200/50 p-3">
           <div className="flex min-w-0 items-center gap-3">
             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-green-700 text-xs font-bold">
-              AM
+              {product.user.username.slice(0, 1).toUpperCase()}
             </div>
 
             <div className="min-w-0">
-              <p className="text-xs font-semibold">{product.seller.name}</p>
+              <p className="text-xs font-semibold">@{product.user.username}</p>
             </div>
           </div>
 
           <Link
-            href="/profile"
+            href={`/@${product.user.username}`}
             className="shrink-0 rounded-full border border-zinc-200/50 px-3 py-2 text-[10px] font-medium"
           >
             View store

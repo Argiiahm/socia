@@ -2,19 +2,10 @@
 
 import HeaderBar from "@/components/layouts/HeaderBar";
 import ProductCard from "@/components/ui/products/ProductCard";
-import { getProducts } from "@/services/product.service";
-import { useEffect, useState } from "react";
+import useProducts from "@/hooks/useProducts";
 
 const ProductsPage = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const response = await getProducts();
-      setProducts(response.product);
-    };
-    fetchProducts();
-  }, []);
+  const { products } = useProducts();
 
   return (
     <main className="min-h-screen w-full border-x border-zinc-200/50">

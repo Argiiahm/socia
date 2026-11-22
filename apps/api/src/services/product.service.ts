@@ -22,6 +22,29 @@ export const GetProducts = async () => {
   });
 };
 
+export const GetProduct = async (productId: string) => {
+  if (!productId) throw createHttpError.NotFound("Not Found");
+
+  return await Prisma.products.findFirst({
+    where: { id: productId },
+    select: {
+      id: true,
+      thumbnail: true,
+      name: true,
+      description: true,
+      price: true,
+      images: true,
+      features: true,
+      user: {
+        select: {
+          id: true,
+          username: true,
+        },
+      },
+    },
+  });
+};
+
 export const GetProductsByUsername = async (username: string) => {
   return await Prisma.products.findMany({
     where: {

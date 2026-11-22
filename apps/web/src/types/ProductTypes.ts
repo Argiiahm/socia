@@ -1,14 +1,19 @@
 export type ProductTypes = {
-  id: number;
-  slug: string;
+  id: string;
   name: string;
   price: number;
   thumbnail: string;
-  seller: {
-    name: string;
-  }
+  user: {
+    id: string;
+    username: string;
+  };
   images: string[];
   description: string;
   features: string[];
+};
 
-}
+export type ProductResponse<TProduct = ProductTypes> = {
+  success: boolean;
+  message: string;
+  product: TProduct;
+};

@@ -15,6 +15,17 @@ export const GetProducts = asyncHandler(
   },
 );
 
+export const GetProduct = asyncHandler(
+  async (req: Request<{ productId: string }>, res: Response) => {
+    const product = await ProductService.GetProduct(req.params.productId);
+    return res.status(200).json({
+      success: true,
+      message: "Successfully Get Product",
+      product: product,
+    });
+  },
+);
+
 export const GetProductsByUsername = asyncHandler(
   async (req: Request<{ username: string }>, res: Response) => {
     const products = await ProductService.GetProductsByUsername(
