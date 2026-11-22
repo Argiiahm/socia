@@ -1,11 +1,11 @@
 import type { IconType } from "react-icons";
 import {
-  AiFillHome,
-  AiFillMessage,
-  AiFillShopping,
-  AiFillSwitcher,
+    AiOutlineHome,
+    AiOutlineMessage,
+    AiOutlineShopping,
+    AiOutlineSwitcher,
 } from "react-icons/ai";
-import { FaBell, FaUser } from "react-icons/fa6";
+import { FaRegBell, FaRegUser } from "react-icons/fa6";
 
 export type MenuItemType = {
   label: string;
@@ -18,34 +18,34 @@ export type MenuItemType = {
 export const getMenuItems = (username?: string): MenuItemType[] => [
   {
     label: "Home",
-    icon: AiFillHome,
+    icon: AiOutlineHome,
     href: "/",
   },
   {
     label: "Products",
-    icon: AiFillShopping,
+    icon: AiOutlineShopping,
     href: "/products",
   },
   {
     label: "Publications",
-    icon: AiFillSwitcher,
+    icon: AiOutlineSwitcher,
     href: "/publications",
   },
   {
     label: "Messages",
-    icon: AiFillMessage,
+    icon: AiOutlineMessage,
     href: "/messages",
   },
   {
     label: "Notifications",
-    icon: FaBell,
+    icon: FaRegBell,
     href: "/notifications",
     badge: 3,
     className: "mt-4",
   },
   {
     label: "Profile",
-    icon: FaUser,
+    icon: FaRegUser,
     href: username ? `/@${username}` : "/login",
   },
 ];

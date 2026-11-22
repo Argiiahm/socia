@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "i.etsystatic.com",
+        hostname: "pub-b1c686af5d404c68a77298f1120443ce.r2.dev",
         port: "",
       },
     ],
