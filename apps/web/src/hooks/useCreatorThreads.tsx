@@ -6,17 +6,27 @@ import { useEffect, useState } from "react";
 
 const useCreatorThreads = (username: string) => {
   const [threads, setThreads] = useState<ThreadType[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
-    const response = await getThreadsByUsername(username);
-    setThreads(response.data);
+    try {
+      setIsLoading(true);
+      setError(null);
+      const response = await getThreadsByUsername(username);
+      setThreads(response.data);
+    } catch (error) {
+      setError(error instanceof Error ? error.message : 'Failed to fetch')
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
     fetchData();
   }, [username]);
 
-  return { fetchData, threads };
+  return { fetchData, threads, isLoading, error };
 };
 
 export default useCreatorThreads;

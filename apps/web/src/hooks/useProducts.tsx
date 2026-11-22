@@ -6,13 +6,19 @@ import { useEffect, useState } from "react";
 
 const useProducts = () => {
   const [products, setProducts] = useState<ProductTypes[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchProducts = async () => {
     try {
+      setIsLoading(true);
+      setError(null);
       const response = await getProducts();
       setProducts(response.product);
     } catch (error) {
-      console.error(error);
+      setError(error instanceof Error ? error.message : 'Failed to fetch products')
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -20,7 +26,7 @@ const useProducts = () => {
     fetchProducts();
   }, []);
 
-  return { fetchProducts, products };
+  return { fetchProducts, products, isLoading, error };
 };
 
 export default useProducts;

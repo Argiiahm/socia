@@ -1,34 +1,32 @@
 "use client";
 
 import { getPublicationsByUsername } from "@/services/publication.service";
+import { PublicationTypes } from "@/types/PublicationTypes";
 import { useEffect, useState } from "react";
 
-export type CreatorPublication = {
-  id: string;
-  image: string;
-  title: string;
-  content: string;
-  createdAt: string;
-  user: {
-    id: string;
-    fullname: string;
-    username: string;
-  };
-};
-
 const useCreatorPublications = (username: string) => {
-  const [publications, setPublications] = useState<CreatorPublication[]>([]);
+  const [publications, setPublications] = useState<PublicationTypes[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
-    const response = await getPublicationsByUsername(username);
-    setPublications(response.data);
+    try {
+      setIsLoading(true);
+      setError(null);
+      const response = await getPublicationsByUsername(username);
+      setPublications(response.data);
+    } catch (error) {
+      setError(error instanceof Error ? error.message : 'Failed to Fetch')
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
     fetchData();
   }, [username]);
 
-  return { fetchData, publications };
+  return { fetchData, publications, isLoading, error };
 };
 
 export default useCreatorPublications;

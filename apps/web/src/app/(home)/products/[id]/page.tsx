@@ -1,39 +1,15 @@
 "use client";
 
 import DetailProductCard from "@/components/ui/products/DetailProductCard";
-import { getProduct } from "@/services/product.service";
-import { ProductTypes } from "@/types/ProductTypes";
+import useProduct from "@/hooks/useProduct";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 
 const ProductDetailPage = () => {
   const { id } = useParams<{ id: string }>();
-  const [product, setProduct] = useState<ProductTypes | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        setIsLoading(true);
-        setError(null);
-
-        const response = await getProduct(id);
-        setProduct(response.product);
-      } catch (error) {
-        setError(
-          error instanceof Error ? error.message : "Failed to fetch product",
-        );
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    if (id) fetchProduct();
-  }, [id]);
+  const { product, isLoading, error } = useProduct(id);
 
   return (
     <main className="min-h-screen w-full border-x border-zinc-200/50">
