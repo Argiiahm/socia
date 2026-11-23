@@ -1,9 +1,9 @@
 import type { IconType } from "react-icons";
 import {
-    AiOutlineHome,
-    AiOutlineMessage,
-    AiOutlineShopping,
-    AiOutlineSwitcher,
+  AiOutlineHome,
+  AiOutlineMessage,
+  AiOutlineShopping,
+  AiOutlineSwitcher,
 } from "react-icons/ai";
 import { FaRegBell, FaRegUser } from "react-icons/fa6";
 
@@ -47,5 +47,23 @@ export const getMenuItems = (username?: string): MenuItemType[] => [
     label: "Profile",
     icon: FaRegUser,
     href: username ? `/@${username}` : "/login",
+  },
+];
+
+export const studioMenus: MenuItemType[] = [
+  {
+    label: "Dashboard",
+    icon: AiOutlineHome,
+    href: "/studio/dashboard",
+  },
+  {
+    label: "Products",
+    icon: AiOutlineShopping,
+    href: "/studio/products",
+  },
+  {
+    label: "Publications",
+    icon: AiOutlineSwitcher,
+    href: "/studio/publications",
   },
 ];
