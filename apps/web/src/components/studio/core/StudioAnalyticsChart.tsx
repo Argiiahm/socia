@@ -85,7 +85,7 @@ const StudioAnalyticsChart = ({ data }: StudioAnalyticsChartProps) => {
   );
 
   return (
-    <div className="overflow-hidden border border-zinc-200/60 bg-white">
+    <div className="overflow-hidden bg-white">
       {/* Clickable Metric Tab Cards */}
       <div className="grid grid-cols-2 divide-x divide-y sm:divide-y-0 sm:grid-cols-4 border-b border-zinc-100">
         {METRICS.map((metric) => {
